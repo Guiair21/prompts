@@ -1,6 +1,10 @@
-# Prompts do @euguidasilva
+# Eu testei · @euguidasilva
 
-Prompts testados e publicados no Instagram [@euguidasilva](https://www.instagram.com/euguidasilva/).
+Site estático no GitHub Pages: https://guiair21.github.io/prompts/
 
-- [5 prompts de retrato de estúdio](https://guiair21.github.io/prompts/retratos/)
-- [Roteiro base: as 3 perguntas antes de abrir a ferramenta (PDF)](https://guiair21.github.io/prompts/estrutura/roteiro-base.pdf)
+- `index.html`: a página inicial (link da bio), com os materiais de cada teste.
+- `estrutura/roteiro-base.pdf`: o roteiro base, aberto.
+- `retratos/`, `skills/`: páginas entregues pela DM automática (comenta a palavra no Reel).
+- `img/`: capas dos posts. `assets/`: marca Denodo e a peça da abertura, a mesma do site guilherme-silva-livid.vercel.app.
+
+Visual: a base do site pessoal (fundo ink, Jost + Cormorant Garamond, cream). Sem build: é HTML puro, `.nojekyll` desliga o Jekyll.

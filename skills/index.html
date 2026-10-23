@@ -8,36 +8,63 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --fundo:#efefef; --caixa:#ffffff; --borda:#d6d6d6; --tinta:#2a2a2a; --suave:#575b62; --vinho:#7d0001; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--fundo); color:var(--tinta); font-family:Inter, system-ui, sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
-  main { max-width:640px; margin:0 auto; padding:44px 16px 72px; }
-  .kicker { font-size:13px; font-weight:700; letter-spacing:3px; color:var(--suave); }
-  h1 { font-family:Anton, sans-serif; font-weight:400; text-transform:uppercase; font-size:52px; line-height:1; color:var(--vinho); margin:14px 0 14px; }
-  .apoio { font-family:"Instrument Serif", serif; font-style:italic; font-size:24px; color:var(--suave); line-height:1.25; }
-  p { font-size:17px; color:var(--tinta); }
-  .nota { margin-top:22px; padding:18px; border-left:4px solid var(--vinho); background:var(--caixa); border-radius:0 14px 14px 0; font-size:15px; }
-  section.skill { margin-top:52px; }
-  .vezes { font-family:"Instrument Serif", serif; font-style:italic; font-size:22px; color:var(--suave); }
-  h2 { display:inline-block; margin:4px 0 12px; background:var(--vinho); color:#efefef; font-size:26px; font-weight:700; padding:6px 16px 8px; border-radius:10px; }
-  .credito { font-size:14px; color:var(--suave); margin-top:8px; }
-  .credito a, .passo a { color:var(--vinho); font-weight:600; }
-  h3 { font-size:15px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--suave); margin:26px 0 8px; }
-  pre { white-space:pre-wrap; word-break:break-all; font-family:ui-monospace, Consolas, monospace; font-size:14px; line-height:1.5;
-        background:#2a2a2a; color:#f2f2f2; border-radius:12px; padding:14px 16px; }
-  button { margin-top:8px; width:100%; height:46px; border:0; border-radius:999px; background:var(--vinho); color:#efefef;
-           font:700 15px Inter, system-ui, sans-serif; cursor:pointer; }
-  button.ok { background:var(--tinta); }
-  .passo { font-size:15px; }
-  .passo ol { padding-left:20px; display:grid; gap:6px; }
-  footer { margin-top:64px; padding-top:22px; border-top:1px solid var(--borda); font-size:14px; color:var(--suave); }
+:root{
+  --ink:#0B0B0B;--coal:#1C1C1C;--cream:#FFF8AF;--pearl:#EAEAEA;
+  --pearl-70:rgba(234,234,234,.7);--pearl-45:rgba(234,234,234,.45);--pearl-16:rgba(234,234,234,.16);--pearl-08:rgba(234,234,234,.08);
+  --sans:"Jost",ui-sans-serif,system-ui,sans-serif;--serif:"Cormorant Garamond",Georgia,serif;--gut:clamp(20px,3.4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--pearl);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:24px;max-width:calc(100vw - 32px);
+  padding:9px 9px 9px 20px;border-radius:999px;background:rgba(28,28,28,.55);border:1px solid var(--pearl-08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+header .brand{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--pearl);text-decoration:none}
+header .brand img{width:22px;height:22px;display:block}
+.btn{display:inline-block;padding:10px 20px;border-radius:999px;border:1px solid var(--pearl-16);color:var(--pearl);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+@media(max-width:640px){header{gap:14px}}
+main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:118px var(--gut) 72px}
+.em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--cream)}
+.snum{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.snum span,.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--pearl-45)}
+h1{font-size:clamp(36px,5.4vw,64px);font-weight:600;letter-spacing:-.018em;line-height:1.04;overflow-wrap:anywhere}
+.apoio,.lead{margin-top:18px;font-size:17px;line-height:1.65;color:var(--pearl-70);max-width:58ch}
+.apoio{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--cream)}
+p{color:var(--pearl-70);font-size:15.5px}
+a{color:var(--cream)}
+.passos,.nota{margin-top:26px;padding:20px 22px;border:1px solid var(--pearl-08);border-radius:14px;background:linear-gradient(160deg,rgba(28,28,28,.72),rgba(11,11,11,.5));font-size:15px}
+.passos ol,.passo ol{padding-left:22px;display:grid;gap:8px}
+.passos li::marker,.passo li::marker{color:var(--cream);font-weight:600}
+.passos .dica{margin-top:12px;font-size:13.5px;color:var(--pearl-45)}
+section{margin-top:56px;padding-top:30px;border-top:1px solid var(--pearl-08)}
+section img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--pearl-08);filter:saturate(.92) contrast(1.04)}
+.vezes{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--cream)}
+h2{margin:16px 0 10px;font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.1;letter-spacing:0;color:var(--pearl)}
+.credito{font-size:13.5px;color:var(--pearl-45);margin-top:6px}
+h3{font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--pearl-45);margin:24px 0 8px}
+pre{white-space:pre-wrap;word-break:break-word;font-family:var(--sans);font-size:14.5px;line-height:1.55;background:var(--coal);border:1px solid var(--pearl-08);border-radius:12px;padding:16px 18px;color:var(--pearl)}
+pre.cmd,.skill pre{font-family:ui-monospace,Consolas,monospace;font-size:13.5px}
+button{margin-top:10px;width:100%;height:48px;border:1px solid var(--pearl-16);border-radius:999px;background:transparent;color:var(--pearl);font:500 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+button:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+button.ok{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.passo{font-size:14.5px}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--pearl-08);font-size:13.5px;color:var(--pearl-45)}
+footer a{color:var(--pearl-70);text-decoration:none}
+footer a:hover{color:var(--cream)}
 </style>
 </head>
 <body>
+<div id="grain"></div>
+<header>
+  <a class="brand" href="../"><img src="../assets/marca/denodo-cream.svg" alt="Denodo"> Guilherme Silva</a>
+  <a href="https://www.instagram.com/euguidasilva/" class="btn" target="_blank" rel="me">@euguidasilva</a>
+</header>
 <main>
-  <div class="kicker">@EUGUIDASILVA</div>
+  <div class="snum"><span>@euguidasilva</span><span>Material da DM</span></div>
   <h1>As 3 skills que eu mais uso</h1>
   <p class="apoio">Contei no meu histórico do Claude, entre as que baixei pra produzir conteúdo.</p>
 
