@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como eu montei o meu sistema · @euguicarlos</title>
+<meta name="description" content="Os 4 cursos, o mapa das 9 etapas e por onde começar na primeira semana.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B;--coal:#1C1C1C;--cream:#FFF8AF;--pearl:#EAEAEA;
+  --pearl-70:rgba(234,234,234,.7);--pearl-45:rgba(234,234,234,.45);--pearl-16:rgba(234,234,234,.16);--pearl-08:rgba(234,234,234,.08);
+  --sans:"Jost",ui-sans-serif,system-ui,sans-serif;--serif:"Cormorant Garamond",Georgia,serif;--gut:clamp(20px,3.4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--pearl);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:24px;max-width:calc(100vw - 32px);
+  padding:9px 9px 9px 20px;border-radius:999px;background:rgba(28,28,28,.55);border:1px solid var(--pearl-08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+header .brand{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--pearl);text-decoration:none}
+header .brand img{width:22px;height:22px;display:block}
+.btn{display:inline-block;padding:10px 20px;border-radius:999px;border:1px solid var(--pearl-16);color:var(--pearl);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+@media(max-width:640px){header{gap:14px}}
+main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:118px var(--gut) 72px}
+.em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--cream)}
+.snum{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.snum span,.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--pearl-45)}
+h1{font-size:clamp(36px,5.4vw,64px);font-weight:600;letter-spacing:-.018em;line-height:1.04;overflow-wrap:anywhere}
+.apoio,.lead{margin-top:18px;font-size:17px;line-height:1.65;color:var(--pearl-70);max-width:58ch}
+.apoio{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--cream)}
+p{color:var(--pearl-70);font-size:15.5px}
+a{color:var(--cream)}
+.passos,.nota{margin-top:26px;padding:20px 22px;border:1px solid var(--pearl-08);border-radius:14px;background:linear-gradient(160deg,rgba(28,28,28,.72),rgba(11,11,11,.5));font-size:15px}
+.passos ol,.passo ol{padding-left:22px;display:grid;gap:8px}
+.passos li::marker,.passo li::marker{color:var(--cream);font-weight:600}
+.passos .dica{margin-top:12px;font-size:13.5px;color:var(--pearl-45)}
+section{margin-top:56px;padding-top:30px;border-top:1px solid var(--pearl-08)}
+section img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--pearl-08);filter:saturate(.92) contrast(1.04)}
+.vezes{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--cream)}
+h2{margin:16px 0 10px;font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.1;letter-spacing:0;color:var(--pearl)}
+.credito{font-size:13.5px;color:var(--pearl-45);margin-top:6px}
+h3{font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--pearl-45);margin:24px 0 8px}
+pre{white-space:pre-wrap;word-break:break-word;font-family:var(--sans);font-size:14.5px;line-height:1.55;background:var(--coal);border:1px solid var(--pearl-08);border-radius:12px;padding:16px 18px;color:var(--pearl)}
+pre.cmd,.skill pre{font-family:ui-monospace,Consolas,monospace;font-size:13.5px}
+button{margin-top:10px;width:100%;height:48px;border:1px solid var(--pearl-16);border-radius:999px;background:transparent;color:var(--pearl);font:500 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+button:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+button.ok{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.passo{font-size:14.5px}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--pearl-08);font-size:13.5px;color:var(--pearl-45)}
+footer a{color:var(--pearl-70);text-decoration:none}
+footer a:hover{color:var(--cream)}
+</style>
+</head>
+<body>
+<div id="grain"></div>
+<header>
+  <a class="brand" href="../"><img src="../assets/marca/denodo-cream.svg" alt="Denodo"> Guilherme Silva</a>
+  <a href="https://www.instagram.com/euguicarlos/" class="btn" target="_blank" rel="me">@euguicarlos</a>
+</header>
+<main>
+  <div class="snum"><span>@euguicarlos</span><span>Material da DM</span></div>
+  <h1>Como eu montei o meu sistema</h1>
+  <p class="apoio">Quebrei o tornozelo, fiquei de molho e usei o tempo parado pra aprender. Seis semanas depois, eu tinha um sistema que organiza o meu trabalho inteiro.</p>
+
+  <div class="nota">
+    Hoje ele tem mais de 70 habilidades, já ajudou a produzir 58 peças e guarda 79 referências que eu estudei.
+    Mas ele não nasceu pronto. Nasceu de quatro cursos e de muita tentativa. Aqui está a ordem em que eu fiz, o mapa de como ele funciona e por onde eu começaria se fosse hoje.
+  </div>
+
+  <section>
+    <div class="vezes">1</div>
+    <h2>Os 4 cursos, na ordem</h2>
+    <p>Fiz os quatro entre 20 e 31 de março de 2026, ainda de bota.</p>
+    <div class="passos"><ol>
+      <li><b>IA para Marketing</b> (Inner Academy, 9 h). Me deu o mapa geral: o que a inteligência artificial faz bem em conteúdo e onde ela erra.</li>
+      <li><b>Dominando a IA Generativa</b> (Inner Academy, 4 h). Aprendi a pedir direito: contexto, exemplo e formato da resposta.</li>
+      <li><b>Claude Code</b> (Anthropic). Foi aqui que virou sistema: a inteligência artificial trabalhando nos meus arquivos, no meu computador. <a href="https://anthropic.skilljar.com/claude-code-in-action" target="_blank">Ver o curso ↗</a></li>
+      <li><b>Claude Cowork</b> (Anthropic). Como dividir o trabalho com ela no dia a dia, sem eu virar só revisor. <a href="https://anthropic.skilljar.com/introduction-to-claude-cowork" target="_blank">Ver o curso ↗</a></li>
+    </ol>
+    <p class="dica">Os cursos da Anthropic são em inglês. Se o inglês travar, ative a legenda traduzida do navegador.</p></div>
+  </section>
+
+  <section>
+    <div class="vezes">2</div>
+    <h2>O mapa: 9 etapas</h2>
+    <p>Cada etapa é uma habilidade, ou seja, um arquivo de instruções que a inteligência artificial segue sempre do mesmo jeito.</p>
+    <div class="passos"><ol>
+      <li><b>Eu mando o link</b> de um Reel ou vídeo que me chamou atenção.</li>
+      <li><b>Ela estuda o vídeo inteiro:</b> transcreve a fala, olha os quadros e conta os cortes.</li>
+      <li><b>Vira nota no meu Obsidian,</b> com o que aquele vídeo ensina pro meu perfil.</li>
+      <li><b>Sai a pauta da semana,</b> cruzando as notas com o que funcionou nos meus números.</li>
+      <li><b>Escreve o roteiro,</b> que só passa se segurar nos 3 primeiros segundos.</li>
+      <li><b>Escreve a legenda</b> no meu jeito de falar, sem cara de robô.</li>
+      <li><b>Produz as telas:</b> imagem, animação, voz e trilha. Eu gravo o rosto quando precisa.</li>
+      <li><b>Publica pela API</b> do Instagram, só depois que eu aprovo.</li>
+      <li><b>Lê os números</b> em 48 horas e anota o que mudar no próximo.</li>
+    </ol>
+    <p class="dica">Eu continuo decidindo tudo: o que entra, o que sai e o que vai ao ar. Ela faz o trabalho pesado.</p></div>
+  </section>
+
+  <section>
+    <div class="vezes">3</div>
+    <h2>Por onde eu começaria hoje</h2>
+    <p>Não comece pelas 9 etapas. Comece por estas três, uma por semana. Cole cada texto no Claude, no ChatGPT ou no Gemini.</p>
+
+    <h3>Semana 1 · o arquivo da sua voz</h3>
+    <pre id="p1">Quero criar um arquivo chamado "minha-voz" para você usar sempre que escrever por mim.
+Vou colar abaixo 5 textos que eu escrevi e gostei. Leia e me devolva:
+1. Como eu abro um texto e como eu fecho.
+2. As palavras e expressões que eu uso muito.
+3. O que eu nunca faria (tom, palavras, formato).
+4. Três regras curtas para alguém escrever como eu.
+Escreva tudo em português, em tópicos curtos. Depois me pergunte o que eu mudaria.
+
+[cole aqui os 5 textos]</pre>
+    <button data-alvo="p1">Copiar texto</button>
+
+    <h3>Semana 2 · o roteirista</h3>
+    <pre id="p2">Use o arquivo "minha-voz" que criamos.
+Escreva um roteiro de Reel de até 40 segundos sobre: [tema].
+Regras:
+1. Nos 2 primeiros segundos, uma tensão: uma dor, uma surpresa ou um resultado na tela.
+2. Deixe claro logo no começo que tem mais coisa vindo.
+3. Mostre a recompensa na tela, não só fale dela.
+4. Frases curtas, do jeito que eu falo.
+Entregue em duas colunas: o que eu falo e o que aparece na tela.</pre>
+    <button data-alvo="p2">Copiar texto</button>
+
+    <h3>Semana 3 · o revisor que tira a cara de robô</h3>
+    <pre id="p3">Revise o texto abaixo como um editor exigente.
+Procure e corrija:
+1. Travessões e frases de efeito em trio.
+2. Falso contraste ("não é X, é Y").
+3. Palavras que soam como robô ou propaganda.
+4. Qualquer dado sem fonte.
+Me devolva o texto corrigido e, embaixo, a lista do que você mudou e por quê.
+
+[cole aqui o texto]</pre>
+    <button data-alvo="p3">Copiar texto</button>
+  </section>
+
+  <footer>
+    Testo inteligência artificial em conteúdo de verdade e conto se deu certo. @euguicarlos
+  </footer>
+</main>
+<script>
+  document.querySelectorAll('button[data-alvo]').forEach(b => {
+    b.addEventListener('click', async () => {
+      const txt = document.getElementById(b.dataset.alvo).innerText;
+      try { await navigator.clipboard.writeText(txt); } catch (e) {
+        const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+      }
+      b.textContent = 'Copiado'; b.classList.add('ok');
+      setTimeout(() => { b.textContent = 'Copiar texto'; b.classList.remove('ok'); }, 1800);
+    });
+  });
+</script>
+</body>
+</html>
