@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como eu monto o pedido de um post criativo · @euguicarlos</title>
+<meta name="description" content="O pedido que eu usei no Reel, aberto, e o molde pra você montar o seu: o cérebro fixo e o pedido de cada post.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B;--coal:#1C1C1C;--cream:#FFF8AF;--pearl:#EAEAEA;
+  --pearl-70:rgba(234,234,234,.7);--pearl-45:rgba(234,234,234,.45);--pearl-16:rgba(234,234,234,.16);--pearl-08:rgba(234,234,234,.08);
+  --sans:"Jost",ui-sans-serif,system-ui,sans-serif;--serif:"Cormorant Garamond",Georgia,serif;--gut:clamp(20px,3.4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--pearl);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:24px;max-width:calc(100vw - 32px);
+  padding:9px 9px 9px 20px;border-radius:999px;background:rgba(28,28,28,.55);border:1px solid var(--pearl-08);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+header .brand{display:flex;align-items:center;gap:9px;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--pearl);text-decoration:none}
+header .brand img{width:22px;height:22px;display:block}
+.btn{display:inline-block;padding:10px 20px;border-radius:999px;border:1px solid var(--pearl-16);color:var(--pearl);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+@media(max-width:640px){header{gap:14px}}
+main{position:relative;z-index:10;max-width:720px;margin:0 auto;padding:118px var(--gut) 72px}
+.em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--cream)}
+.snum{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.snum span,.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--pearl-45)}
+h1{font-size:clamp(36px,5.4vw,64px);font-weight:600;letter-spacing:-.018em;line-height:1.04;overflow-wrap:anywhere}
+.apoio,.lead{margin-top:18px;font-size:17px;line-height:1.65;color:var(--pearl-70);max-width:58ch}
+.apoio{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--cream)}
+p{color:var(--pearl-70);font-size:15.5px}
+a{color:var(--cream)}
+.passos,.nota{margin-top:26px;padding:20px 22px;border:1px solid var(--pearl-08);border-radius:14px;background:linear-gradient(160deg,rgba(28,28,28,.72),rgba(11,11,11,.5));font-size:15px}
+.passos ol,.passo ol{padding-left:22px;display:grid;gap:8px}
+.passos li::marker,.passo li::marker{color:var(--cream);font-weight:600}
+.passos .dica{margin-top:12px;font-size:13.5px;color:var(--pearl-45)}
+section{margin-top:56px;padding-top:30px;border-top:1px solid var(--pearl-08)}
+section img{width:100%;height:auto;display:block;border-radius:14px;border:1px solid var(--pearl-08);filter:saturate(.92) contrast(1.04)}
+.vezes{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--cream)}
+h2{margin:16px 0 10px;font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.1;letter-spacing:0;color:var(--pearl)}
+.credito{font-size:13.5px;color:var(--pearl-45);margin-top:6px}
+h3{font-size:10.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--pearl-45);margin:24px 0 8px}
+pre{white-space:pre-wrap;word-break:break-word;font-family:var(--sans);font-size:14.5px;line-height:1.55;background:var(--coal);border:1px solid var(--pearl-08);border-radius:12px;padding:16px 18px;color:var(--pearl)}
+pre.cmd,.skill pre{font-family:ui-monospace,Consolas,monospace;font-size:13.5px}
+button{margin-top:10px;width:100%;height:48px;border:1px solid var(--pearl-16);border-radius:999px;background:transparent;color:var(--pearl);font:500 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+button:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+button.ok{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.passo{font-size:14.5px}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--pearl-08);font-size:13.5px;color:var(--pearl-45)}
+footer a{color:var(--pearl-70);text-decoration:none}
+footer a:hover{color:var(--cream)}
+</style>
+</head>
+<body>
+<div id="grain"></div>
+<header>
+  <a class="brand" href="../"><img src="../assets/marca/denodo-cream.svg" alt="Denodo"> Guilherme Silva</a>
+  <a href="https://www.instagram.com/euguicarlos/" class="btn" target="_blank" rel="me">@euguicarlos</a>
+</header>
+<main>
+  <div class="snum"><span>@euguicarlos</span><span>Material da DM · CÉREBRO</span></div>
+  <h1>Como eu monto o pedido de um post criativo</h1>
+  <p class="apoio">O pedido que gerou o card do Reel, aberto, e o molde pra você montar o seu.</p>
+
+  <div class="nota">
+    Quando você escreve "faz um post pra mim", a IA preenche tudo que você não disse com a média do que ela já viu. Por isso sai o robô azul com o cérebro brilhando.
+    <br><br>
+    O que mudou o meu resultado foram duas coisas: um cérebro fixo, que eu escrevo uma vez, e um pedido em blocos pra cada post.
+  </div>
+
+  <section>
+    <div class="vezes">Parte 1</div>
+    <h2>O cérebro</h2>
+    <p>Antes de pedir qualquer post, a IA precisa saber quem você é. Eu guardo isso em quatro arquivos curtos: quem eu sou, como eu falo, minha marca e minhas provas. Colo no começo da conversa ou deixo salvo nas instruções do projeto.</p>
+    <p style="margin-top:12px">Preenche uma vez. Quando alguma coisa mudar, você ajusta ali e não precisa explicar de novo a cada post.</p>
+    <h3>Molde do cérebro</h3>
+    <pre id="b1">QUEM EU SOU
+O que eu faço, em uma frase:
+Pra quem eu falo (quem é e o que vive no dia a dia):
+O que eu quero que a pessoa pense depois de ver meu post:
+
+COMO EU FALO
+Tom (ex.: colega de profissão, direto, sem didatismo):
+Palavras que eu nunca uso:
+Vícios que eu não quero no texto (ex.: travessão, frase de efeito em trio, três frases curtas seguidas pra dar impacto):
+
+MINHA MARCA
+Cores, com o código (ex.: #000000, #FEBE10):
+Fontes:
+Como é o visual que parece meu:
+O que eu nunca quero ver (ex.: robô, cérebro azul brilhando, foto de banco de imagem):
+
+MINHAS PROVAS
+Números reais que eu posso usar, com a fonte:
+Regra: se faltar número, escreve [PREENCHER]. Nunca inventa.</pre>
+    <button data-alvo="b1">Copiar</button>
+  </section>
+
+  <section>
+    <div class="vezes">Parte 2</div>
+    <h2>O pedido de cada post</h2>
+    <p>Uma confissão: eu não escrevi o pedido do Reel na mão. Falei pro ChatGPT o tema, as duas frases, a cena e o que eu não queria ver. Pedi pra ele montar o pedido completo em blocos e me mostrar antes de gerar.</p>
+    <p style="margin-top:12px">A minha parte foi decidir. A dele foi organizar.</p>
+    <h3>O que eu mando primeiro</h3>
+    <pre id="b2">Quero um card pra Instagram sobre [TEMA].
+As frases que vão na arte são: "[FRASE 1]" e "[FRASE 2]".
+Quem vai ver é [QUEM] e eu quero que a pessoa sinta [O QUÊ].
+A cena que eu imagino: [ONDE EU ESTOU, O QUE ESTOU FAZENDO, O QUE ACONTECE EM VOLTA].
+Não quero: [O QUE NÃO PODE APARECER].
+
+Antes de gerar a imagem, escreve o pedido completo em blocos:
+FORMATO, REFERÊNCIA DO PERSONAGEM, CONCEITO VISUAL, DIREÇÃO DE ARTE, TIPOGRAFIA E TEXTO e ACABAMENTO.
+Usa o que está no meu cérebro (quem eu sou, como eu falo, minha marca).
+Me mostra o pedido e espera eu aprovar.</pre>
+    <button data-alvo="b2">Copiar</button>
+    <h3>Depois, as fotos</h3>
+    <p>Se o post tem o seu rosto, manda referência. Quatro ângulos resolvem quase tudo.</p>
+    <pre id="b3">Vou te mandar 4 fotos minhas: de frente, três quartos, perfil e uma de corpo.
+Usa como referência obrigatória de identidade.
+Preserva meu rosto, tom de pele, cabelo, barba e idade.
+Mantém meu corpo como ele é. Não afina meu rosto, não emagrece, não exagera meu peso.</pre>
+    <button data-alvo="b3">Copiar</button>
+  </section>
+
+  <section>
+    <div class="vezes">O real</div>
+    <h2>O pedido que gerou o card do Reel</h2>
+    <p>Esse é o texto que o ChatGPT montou depois da minha conversa com ele. Copiei do jeito que estava.</p>
+    <pre id="b4">Crie um card editorial premium para Instagram, formato vertical 4:5, resolução 1080 × 1350 px, com fotografia hiper-realista, composição publicitária e direção de arte conceitual.
+
+REFERÊNCIA DO PERSONAGEM
+
+Use meu avatar Urban Mindscape como referência obrigatória de identidade. Preserve rigorosamente meu rosto, tom de pele, cabelo curto, barba, idade aparente e características faciais.
+
+Mantenha minha constituição corporal natural: ombros largos, braços volumosos e abdômen moderadamente arredondado. Não afine meu rosto, não emagreça meu corpo e não exagere meu peso.
+
+Vista o personagem com camiseta preta minimalista. Expressão séria, introspectiva e levemente preocupada.
+
+CONCEITO VISUAL
+
+Estou sentado diante de uma mesa escura com notebook aberto, prestes a digitar um comando para uma inteligência artificial.
+
+Ao redor da minha cabeça, uma representação visual abstrata do pensamento humano começa a perder luminosidade. Pequenas conexões neurais se apagam enquanto interfaces digitais translúcidas, janelas de prompts e fluxos de informação avançam gradualmente pelo ambiente.
+
+A inteligência artificial assume o espaço visual enquanto eu permaneço imóvel, olhando para a tela.
+
+O efeito deve transmitir dependência cognitiva e a perda gradual de autonomia intelectual. Não utilizar cérebros anatômicos expostos, robôs ou elementos de ficção científica exagerados.
+
+DIREÇÃO DE ARTE
+
+Estética de campanha editorial de tecnologia, com linguagem visual contemporânea e sofisticada.
+
+Fotografia realista com iluminação cinematográfica lateral, sombras profundas, contraste forte e textura de filme analógico.
+
+Paleta: preto grafite, cinza carvão, tons naturais de pele e pequenos detalhes luminosos em amarelo ácido.
+
+Enquadramento em plano médio, com o personagem ocupando principalmente o centro e a metade direita da composição.
+
+As interfaces digitais devem apresentar profundidade espacial, transparência realista e iluminação sutil. O rosto permanece perfeitamente visível.
+
+TIPOGRAFIA E TEXTO
+
+Inserir exatamente o seguinte texto em português:
+
+"O PIOR ERRO DE QUEM USA IA NO TRABALHO?"
+
+"PEDIR AJUDA CEDO DEMAIS."
+
+Primeira frase na parte superior esquerda, em fonte sans-serif condensada, branca, com boa legibilidade.
+
+Segunda frase em destaque, com "CEDO DEMAIS." em amarelo ácido, utilizando tipografia grande, pesada e de alto contraste.
+
+Criar uma hierarquia tipográfica marcante, com alinhamento editorial, espaçamento intencional e amplo respiro.
+
+O texto não deve cobrir o rosto do personagem.
+
+ACABAMENTO
+
+Composição visual impactante, adequada para leitura imediata no feed do Instagram.
+
+Fotografia autêntica, texturas realistas, iluminação profissional, integração natural entre personagem e elementos digitais.
+
+Evitar visual genérico de inteligência artificial, estética de banco de imagens, excesso de efeitos, letras distorcidas, texto incorreto, deformações anatômicas e alterações na identidade do avatar.
+
+Resultado final com aparência de campanha de uma revista internacional de tecnologia e criatividade.</pre>
+    <button data-alvo="b4">Copiar o pedido inteiro</button>
+    <div class="passos">
+      <ol>
+        <li>Duas frases só na arte. A primeira gera curiosidade, a segunda entrega a provocação. A explicação fica na legenda.</li>
+        <li>O bloco do que evitar pesa tanto quanto o resto. É ele que tira o robô e a foto de banco de imagem.</li>
+        <li>A primeira versão quase nunca é a boa. Olha o que saiu, escreve numa linha o que está errado e pede pra corrigir só aquilo.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    Testo inteligência artificial em conteúdo de verdade e conto se deu certo. Mais materiais na <a href="../">página inicial</a>.
+  </footer>
+</main>
+<script>
+  document.querySelectorAll('button[data-alvo]').forEach(b => {
+    const rot = b.textContent;
+    b.addEventListener('click', async () => {
+      const txt = document.getElementById(b.dataset.alvo).innerText;
+      try { await navigator.clipboard.writeText(txt); } catch (e) {
+        const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+      }
+      b.textContent = 'Copiado'; b.classList.add('ok');
+      setTimeout(() => { b.textContent = rot; b.classList.remove('ok'); }, 1800);
+    });
+  });
+</script>
+</body>
+</html>
