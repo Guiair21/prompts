@@ -126,9 +126,20 @@ section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
 .num-ouro{grid-column:1/-1;background:var(--gold);padding:20px 20px 18px}
 .num-ouro b{font-size:68px}
 .num-largo{grid-column:1/-1}
+@media(min-width:861px){
+  .autor{grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:0;grid-template-areas:"f f f f c c c c c c c c" "f f f f n n n n n n n n" "t t t t t t t d d d d d"}
+  .autor>img{grid-area:f;max-width:none}
+  .autor-cab{grid-area:c}
+  .nums{grid-area:n;grid-template-columns:repeat(3,1fr);margin:0}
+  .autor-txt{grid-area:t;margin-top:40px}
+  .autor .dist{grid-area:d;margin-top:40px;align-self:center;text-align:center}
+  .autor .dist-grade{max-width:330px;margin:0 auto}
+  .num-ouro{grid-column:3;grid-row:1/span 2}
+}
+@media(max-width:860px){.so-pc{display:none}}
 .dist{margin-top:34px}
 .dist-tit{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
-.dist-grade{display:flex;flex-wrap:wrap;gap:12px;max-width:420px}
+.dist-grade{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:420px}
 .dist-grade a{flex:0 0 calc((100% - 24px)/3)}
 .dist-grade a{display:block;transition:transform .2s}
 .dist-grade a:hover{transform:translateY(-3px)}
@@ -358,25 +369,25 @@ footer a{color:var(--pearl-70)}
 </section>
 
 <section>
-  <div class="wrap narrow">
+  <div class="wrap">
     <div class="autor">
       <img src="../img/retrato.jpg" alt="Guilherme Carlos da Silva" width="640" height="800" loading="lazy">
-      <div>
-        <div class="kicker">Quem escreveu</div>
-        <h2 style="margin-bottom:16px">Guilherme Carlos da Silva</h2>
-        <div class="nums">
-          <div class="num num-ouro"><b>13,4 mil</b><span>seguidores no @euguicarlos, perfil feito com IA</span></div>
-          <div class="num"><b>6 anos</b><span>trabalhando com marketing</span></div>
+      <div class="autor-cab"><div class="kicker">Quem escreveu</div>
+        <h2 style="margin-bottom:16px">Guilherme Carlos da Silva</h2></div>
+      <div class="nums">
+          <div class="num num-ouro"><b>+13<br class="so-pc"> mil</b><span>seguidores no @euguicarlos, perfil feito com IA</span></div>
+          <div class="num"><b>10+ anos</b><span>trabalhando com marketing</span></div>
           <div class="num"><b>5</b><span>certificações da Anthropic</span></div>
           <div class="num"><b>80+</b><span>peças feitas com o sistema</span></div>
           <div class="num"><b>20 min</b><span>numa tarefa que levava um dia inteiro</span></div>
         </div>
-        <p>Eu trabalho com marketing desde 2020. Social media, vídeo, fotografia, design e texto, para empresas e para a minha própria marca. Passei anos fazendo à mão tudo o que hoje eu ensino a inteligência artificial a fazer. Por isso eu sei quando o resultado ficou bom e quando ficou genérico.</p>
+      <div class="autor-txt">
+        <p>Eu trabalho com marketing há mais de dez anos. Social media, vídeo, fotografia, design e texto, para empresas e para a minha própria marca. Passei anos fazendo à mão tudo o que hoje eu ensino a inteligência artificial a fazer. Por isso eu sei quando o resultado ficou bom e quando ficou genérico.</p>
         <p>Neste ano eu quebrei o tornozelo e fiquei seis semanas parado. Usei esse tempo pra estudar inteligência artificial a sério, começando pelos cursos da Anthropic, a empresa que faz o Claude. Foi dali que saiu o sistema que hoje organiza o meu trabalho.</p>
-        <p>É ele que produz o meu perfil, o <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a>, com 13,4 mil seguidores: pauta, roteiro, legenda, telas, publicação e leitura dos números. Eu decido o que entra, gravo o rosto quando precisa e aprovo o que vai ao ar. No meu caso, uma tarefa que levava um dia inteiro passou a levar menos de vinte minutos, contando a revisão.</p>
+        <p>É ele que produz o meu perfil, o <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a>, com mais de 13 mil seguidores: pauta, roteiro, legenda, telas, publicação e leitura dos números. Eu decido o que entra, gravo o rosto quando precisa e aprovo o que vai ao ar. No meu caso, uma tarefa que levava um dia inteiro passou a levar menos de vinte minutos, contando a revisão.</p>
         <p>Só que eu não vou te vender milagre: as primeiras semanas com um agente são mais lentas. Ensinar dá trabalho, igual com funcionário novo. No capítulo 6 eu mostro como passar dessa fase sem desistir.</p>
-        <div class="dist"><div class="dist-tit">Certificações da Anthropic</div><div class="dist-grade"><a href="https://academy.claude.com/verify/4500afbe7bee60782b4af74912265952" target="_blank" rel="noopener" title="Conferir: AI Fluency for creative work"><img src="img/dist-fluencia-criativos.webp" alt="Distintivo da Claude Academy: AI Fluency for creative work" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/28976c8b49c6a9bedb74dcf31663133d" target="_blank" rel="noopener" title="Conferir: Introduction to agent skills"><img src="img/dist-habilidades-agente.webp" alt="Distintivo da Claude Academy: Introduction to agent skills" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/0ade14f53b6919f5607d3a4a32343219" target="_blank" rel="noopener" title="Conferir: Claude Code in action"><img src="img/dist-claude-code.webp" alt="Distintivo da Claude Academy: Claude Code in action" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/863b73932ee7ac37a46458e4b240ee98" target="_blank" rel="noopener" title="Conferir: Introduction to Claude Cowork"><img src="img/dist-cowork.webp" alt="Distintivo da Claude Academy: Introduction to Claude Cowork" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/d6c6efe99e0c48b9c05f8fa69d6253f9" target="_blank" rel="noopener" title="Conferir: Claude Code 101"><img src="img/dist-claude-code-101.webp" alt="Distintivo da Claude Academy: Claude Code 101" width="400" height="402" loading="lazy"></a></div><p class="dist-nota">Toque em um distintivo para conferir na Claude Academy.</p></div>
       </div>
+      <div class="dist"><div class="dist-tit">Certificações da Anthropic</div><div class="dist-grade"><a href="https://academy.claude.com/verify/4500afbe7bee60782b4af74912265952" target="_blank" rel="noopener" title="Conferir: AI Fluency for creative work"><img src="img/dist-fluencia-criativos.webp" alt="Distintivo da Claude Academy: AI Fluency for creative work" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/28976c8b49c6a9bedb74dcf31663133d" target="_blank" rel="noopener" title="Conferir: Introduction to agent skills"><img src="img/dist-habilidades-agente.webp" alt="Distintivo da Claude Academy: Introduction to agent skills" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/0ade14f53b6919f5607d3a4a32343219" target="_blank" rel="noopener" title="Conferir: Claude Code in action"><img src="img/dist-claude-code.webp" alt="Distintivo da Claude Academy: Claude Code in action" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/863b73932ee7ac37a46458e4b240ee98" target="_blank" rel="noopener" title="Conferir: Introduction to Claude Cowork"><img src="img/dist-cowork.webp" alt="Distintivo da Claude Academy: Introduction to Claude Cowork" width="400" height="402" loading="lazy"></a><a href="https://academy.claude.com/verify/d6c6efe99e0c48b9c05f8fa69d6253f9" target="_blank" rel="noopener" title="Conferir: Claude Code 101"><img src="img/dist-claude-code-101.webp" alt="Distintivo da Claude Academy: Claude Code 101" width="400" height="402" loading="lazy"></a></div><p class="dist-nota">Toque em um distintivo para conferir na Claude Academy.</p></div>
     </div>
   </div>
 </section>
