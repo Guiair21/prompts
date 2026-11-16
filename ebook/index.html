@@ -85,6 +85,13 @@ section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
 .caso{margin-top:26px;padding:26px;border:1px solid var(--pearl-08);border-radius:16px;background:linear-gradient(160deg,rgba(28,28,28,.75),rgba(11,11,11,.4))}
 .caso .nota{font-size:13.5px;color:var(--pearl-45);font-style:italic}
 
+/* agente funcionando */
+.pratica{display:grid;grid-template-columns:1fr 320px;gap:clamp(28px,5vw,64px);align-items:center;max-width:900px;margin:0 auto}
+.pratica-video{margin:0}
+.pratica-video video{width:100%;height:auto;display:block;border-radius:22px;border:1px solid var(--pearl-16);background:#05070d;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 6px rgba(234,234,234,.04)}
+.pratica-video figcaption{margin-top:12px;font-size:13.5px;color:var(--pearl-45);text-align:center}
+@media(max-width:860px){.pratica{grid-template-columns:1fr}.pratica-video{max-width:300px;margin:6px auto 0}}
+
 /* o que recebe */
 .itens{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .item{padding:24px;border:1px solid var(--pearl-08);border-radius:16px;background:rgba(28,28,28,.55)}
@@ -226,6 +233,23 @@ footer a{color:var(--pearl-70)}
       <p>Hoje, segunda de manhã, ela digita uma barra e escolhe o aviso da semana. Ele confere a data no site oficial e, quando o site diz uma coisa e o calendário outra, ele para e pergunta. <strong>Ela lê e aprova.</strong></p>
     </div>
     <p style="margin-top:22px">O agente que você monta sai com as suas regras, o seu tom, as suas paradas e os seus exemplos. Ninguém mais tem um igual, porque ninguém faz a sua tarefa exatamente como você.</p>
+  </div>
+</section>
+
+<section id="pratica">
+  <div class="wrap">
+    <div class="pratica">
+      <div class="pratica-texto">
+        <div class="kicker">Na prática</div>
+        <h2>Um agente montado, trabalhando</h2>
+        <p>Esse é o meu. Eu mando o link de um vídeo e ele segue as etapas sozinho: estuda as referências, escolhe a pauta, escreve a legenda, produz as telas e, depois de publicado, lê os números.</p>
+        <p>Cada etapa segue um manual escrito com o mesmo método do livro. Publicar continua comigo.</p>
+      </div>
+      <figure class="pratica-video">
+        <video src="img/agente-funcionando.mp4" poster="img/agente-funcionando.jpg" autoplay muted loop playsinline preload="metadata" width="540" height="960" aria-label="Animação do sistema de agentes do Gui: do link do vídeo até a leitura dos números"></video>
+        <figcaption>Um agente montado com este método: o meu, que produz conteúdo para o @euguicarlos.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
