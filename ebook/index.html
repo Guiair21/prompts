@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instrução de Trabalho com IA · @euguicarlos</title>
+<meta name="description" content="O livro e as ferramentas pra transformar a tarefa que mais te come tempo num agente de IA que faz do seu jeito. Sem programar. R$ 19,90.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Instrução de Trabalho com IA · @euguicarlos">
+<meta property="og:description" content="Você virou o manual ambulante da sua IA. Monte o agente que faz do seu jeito, sem programar. R$ 19,90.">
+<meta property="og:url" content="https://guiair21.github.io/prompts/ebook/">
+<meta property="og:image" content="https://guiair21.github.io/prompts/ebook/img/capa.jpg">
+<link rel="icon" href="../assets/marca/denodo-cream.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0B;--coal:#1C1C1C;--gold:#FFC21A;--cream:#FFF8AF;--pearl:#EAEAEA;
+  --pearl-70:rgba(234,234,234,.72);--pearl-45:rgba(234,234,234,.5);--pearl-16:rgba(234,234,234,.16);--pearl-08:rgba(234,234,234,.08);
+  --sans:"Jost",ui-sans-serif,system-ui,sans-serif;--serif:"Cormorant Garamond",Georgia,serif;--display:"Bebas Neue","Jost",sans-serif;
+  --gut:clamp(16px,3.4vw,56px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--pearl);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+#grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.3;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--gold)}
+.wrap{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:0 var(--gut)}
+.narrow{max-width:700px}
+.kicker{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:.01em;line-height:.95;color:var(--pearl)}
+h1{font-size:clamp(52px,8.4vw,104px)}
+h1 .ia,h2 .ia{color:var(--gold)}
+h2{font-size:clamp(38px,5.6vw,64px);margin:12px 0 22px}
+h3{font-size:19px;font-weight:600;color:var(--pearl);margin-bottom:6px}
+p{color:var(--pearl-70);margin-top:14px}
+p:first-child{margin-top:0}
+strong{color:var(--pearl);font-weight:600}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--cream)}
+
+/* botão */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:18px 30px;border-radius:999px;background:var(--gold);color:var(--ink);
+  text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;transition:transform .2s,box-shadow .2s;box-shadow:0 14px 40px -12px rgba(255,194,26,.5)}
+.cta:hover{transform:translateY(-2px);box-shadow:0 18px 46px -10px rgba(255,194,26,.65)}
+.cta .preco{font-family:var(--display);font-size:24px;letter-spacing:.02em;line-height:1}
+.aviso{margin-top:14px;font-size:13.5px;color:var(--pearl-45);max-width:46ch}
+
+/* abertura */
+.hero{padding:clamp(28px,4vw,56px) 0 clamp(48px,7vw,90px);display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,70px);align-items:center}
+.hero .sub{font-size:clamp(17px,1.9vw,20px);color:var(--pearl-70);margin-top:22px;max-width:48ch}
+.hero .mote{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.4vw,26px);line-height:1.3;color:var(--cream)}
+.hero .acao{margin-top:30px}
+.livro{position:relative}
+.livro img{width:100%;height:auto;display:block;border-radius:6px;box-shadow:0 40px 80px -24px rgba(0,0,0,.9),0 0 0 1px var(--pearl-08);transform:rotate(1.5deg)}
+.selos{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--pearl-45)}
+.selos span::before{content:"✓ ";color:var(--gold)}
+
+section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
+
+/* antes e depois */
+.tabela{margin-top:26px;display:grid;gap:10px}
+.linha{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--pearl-08);border-radius:14px;overflow:hidden}
+.linha div{padding:16px 18px;font-size:15px}
+.linha .hoje{color:var(--pearl-45);background:rgba(28,28,28,.5)}
+.linha .com{color:var(--pearl);background:linear-gradient(160deg,rgba(255,194,26,.09),rgba(255,194,26,.02));border-left:1px solid var(--pearl-08)}
+.linha.cab div{padding:10px 18px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;background:none;border:0}
+.linha.cab .com{color:var(--gold)}
+.linha.cab{border:0}
+
+/* caso */
+.caso{margin-top:26px;padding:26px;border:1px solid var(--pearl-08);border-radius:16px;background:linear-gradient(160deg,rgba(28,28,28,.75),rgba(11,11,11,.4))}
+.caso .nota{font-size:13.5px;color:var(--pearl-45);font-style:italic}
+
+/* o que recebe */
+.itens{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.item{padding:24px;border:1px solid var(--pearl-08);border-radius:16px;background:rgba(28,28,28,.55)}
+.item .n{font-family:var(--display);font-size:40px;color:var(--gold);line-height:1}
+.item ul{margin-top:10px;padding-left:18px;color:var(--pearl-70);font-size:15px;display:grid;gap:4px}
+.item ul li::marker{color:var(--gold)}
+.frase{margin-top:12px;padding:14px 16px;border-left:2px solid var(--gold);background:rgba(255,194,26,.06);border-radius:0 10px 10px 0;font-size:14.5px;color:var(--pearl)}
+
+/* páginas */
+.paginas{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.paginas figure img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--pearl-08);box-shadow:0 24px 50px -24px rgba(0,0,0,.9)}
+.paginas figcaption{margin-top:10px;font-size:13.5px;color:var(--pearl-45)}
+
+/* para quem */
+.duas{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lista{padding:24px;border:1px solid var(--pearl-08);border-radius:16px}
+.lista ul{list-style:none;display:grid;gap:12px;margin-top:12px}
+.lista li{padding-left:28px;position:relative;color:var(--pearl-70);font-size:15px}
+.lista.sim li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:600}
+.lista.nao li::before{content:"✕";position:absolute;left:0;color:var(--pearl-45)}
+
+/* autor */
+.autor{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start}
+.autor img{width:100%;height:auto;border-radius:16px;border:1px solid var(--pearl-08);display:block}
+
+/* oferta */
+.oferta{text-align:center;padding:clamp(36px,6vw,64px) clamp(20px,5vw,56px);border:1px solid rgba(255,194,26,.35);border-radius:24px;
+  background:radial-gradient(120% 80% at 50% 0%,rgba(255,194,26,.12),rgba(11,11,11,0) 70%),var(--coal)}
+.oferta .valor{font-family:var(--display);font-size:clamp(72px,11vw,120px);color:var(--gold);line-height:1;margin:10px 0 6px}
+.oferta ul{list-style:none;margin:22px auto 28px;max-width:440px;text-align:left;display:grid;gap:10px}
+.oferta li{padding-left:28px;position:relative;color:var(--pearl-70);font-size:15px}
+.oferta li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:600}
+.oferta .aviso{margin-left:auto;margin-right:auto}
+.garantia{margin-top:28px;display:flex;gap:16px;align-items:flex-start;text-align:left;max-width:520px;margin-left:auto;margin-right:auto;padding:18px 20px;border-radius:14px;border:1px solid var(--pearl-08)}
+.garantia .g{font-family:var(--display);font-size:40px;color:var(--gold);line-height:1}
+.garantia p{margin:0;font-size:14.5px}
+
+/* perguntas */
+details{border-bottom:1px solid var(--pearl-08)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-size:17px;font-weight:500;color:var(--pearl);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:26px;font-weight:300;color:var(--gold);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 20px;font-size:15.5px}
+
+footer{position:relative;z-index:10;border-top:1px solid var(--pearl-08);padding:36px var(--gut) 110px;text-align:center;font-size:13px;color:var(--pearl-45)}
+footer a{color:var(--pearl-70)}
+
+/* barra fixa no celular */
+.fixa{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(11,11,11,.92);border-top:1px solid var(--pearl-16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(110%);transition:transform .3s}
+.fixa.on{transform:none;visibility:visible}
+.fixa:not(.on){visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.fixa .t{font-size:13px;color:var(--pearl-70);line-height:1.3}
+.fixa .t b{display:block;font-family:var(--display);font-weight:400;font-size:22px;color:var(--gold);letter-spacing:.02em}
+.fixa .cta{padding:13px 20px;font-size:13px;box-shadow:none}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .hero{padding-top:28px}
+  .livro{max-width:280px;margin:0 auto}
+  .livro img{transform:none}
+  .itens,.duas{grid-template-columns:1fr}
+  .paginas{grid-template-columns:1fr 1fr}
+  .paginas figure:last-child{display:none}
+  .autor{grid-template-columns:1fr}
+  .autor img{max-width:220px}
+  .fixa{display:flex}
+}
+@media(max-width:520px){
+  .linha{grid-template-columns:1fr}
+  .linha .com{border-left:0;border-top:1px solid var(--pearl-08)}
+  .linha.cab{display:none}
+  .linha .hoje::before{content:"Hoje: ";color:var(--pearl-45);font-weight:500}
+  .linha .com::before{content:"Com o agente: ";color:var(--gold);font-weight:500}
+  .cta{width:100%;white-space:nowrap;padding:16px 18px;font-size:14px;letter-spacing:.04em;gap:10px}
+  .cta .preco{font-size:22px}
+  .fixa .cta{width:auto;padding:12px 18px;font-size:13px}
+}
+</style>
+</head>
+<body>
+<div id="grain"></div>
+
+<div class="wrap">
+  <header class="hero" id="topo">
+    <div>
+      <div class="kicker">E-book · Método da fábrica para IA</div>
+      <h1 style="margin-top:16px">Você virou o manual ambulante da <span class="ia">sua IA</span>.</h1>
+      <p class="sub"><strong>Instrução de Trabalho com IA</strong> é o livro e as ferramentas pra transformar a tarefa que mais te come tempo num agente que faz do seu jeito. Sem programar.</p>
+      <p class="mote">Ensina uma vez. Corrige quando precisar. Ele reaproveita toda vez.</p>
+      <div class="acao">
+        <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu agente <span class="preco">R$ 19,90</span></a>
+        <p class="aviso">Precisa de um computador com Windows ou Mac e de uma assinatura paga do Claude, contratada à parte.</p>
+      </div>
+      <div class="selos"><span>Acesso imediato</span><span>Garantia de 7 dias</span><span>Pagamento pela Hotmart</span></div>
+    </div>
+    <div class="livro">
+      <img src="img/capa.jpg" alt="Capa do e-book Instrução de Trabalho com IA, de Guilherme Carlos da Silva" width="900" height="1273" fetchpriority="high">
+    </div>
+  </header>
+</div>
+
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">A dor</div>
+    <h2>Toda semana, a mesma conversa</h2>
+    <p>Abre o ChatGPT ou o Claude. Explica quem você é, o que faz, como gosta do texto. A resposta vem boa, mas não do seu jeito. Você corrige. Ela acerta.</p>
+    <p>Na semana seguinte, conversa nova. E lá vai você explicar tudo de novo.</p>
+    <p>Se você já pensou "o problema sou eu, eu não sei pedir", calma. Eu pensei isso por muito tempo. O problema nunca foi a sua pergunta. A IA chega todo dia como um funcionário novo: capaz, rápida, e sem saber nada de como você trabalha. <strong>E ninguém deu um manual pra ela.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">A virada</div>
+    <h2>A indústria resolveu isso há mais de oitenta anos</h2>
+    <p>Em 1940, a guerra levou os operários experientes e as fábricas ficaram com gente que nunca tinha pisado ali. A saída foi escrever o trabalho passo a passo, do jeito que qualquer pessoa nova conseguisse repetir. Depois, a Toyota foi além: colocou na máquina a capacidade de parar quando dá problema.</p>
+    <p class="serif" style="font-size:22px;line-height:1.35">É exatamente isso que um agente de IA precisa. Um manual escrito por quem conhece o trabalho, e a hora certa de parar e te chamar.</p>
+
+    <div class="tabela" role="table" aria-label="Antes e depois">
+      <div class="linha cab" role="row"><div class="hoje" role="columnheader">Hoje</div><div class="com" role="columnheader">Com o seu agente</div></div>
+      <div class="linha" role="row"><div class="hoje" role="cell">Abre conversa nova e explica quem você é</div><div class="com" role="cell">Ele já leu o manual da sua empresa antes de começar</div></div>
+      <div class="linha" role="row"><div class="hoje" role="cell">Corrige o mesmo erro toda semana</div><div class="com" role="cell">A correção fica anotada no caderno dele e orienta as próximas vezes</div></div>
+      <div class="linha" role="row"><div class="hoje" role="cell">A IA inventa quando não sabe</div><div class="com" role="cell">Ele para e te mostra o que não bateu, em três linhas</div></div>
+      <div class="linha" role="row"><div class="hoje" role="cell">Você copia, cola, confere, ajusta</div><div class="com" role="cell">Você digita uma barra, escolhe a tarefa e aprova o resultado</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Uma história que você vai reconhecer</div>
+    <h2>O aviso da segunda-feira</h2>
+    <div class="caso">
+      <p class="nota">A sócia da Contábil Ponto Certo é personagem do livro, e os números dela são inventados pra mostrar a conta. A situação, você já viveu.</p>
+      <p>Toda segunda de manhã ela escreve o aviso da semana pros clientes: qual imposto vence, até quando, o que fazer. Uma hora e meia, toda semana. Até o dia em que um aviso saiu com a data errada e dois clientes pagaram a guia atrasada. O escritório arcou com as multas.</p>
+      <p>Ela tentou a IA. Funcionava, mas toda segunda era a mesma conversa: quem somos, como a gente fala, onde conferir a data. Aí ela escreveu, uma vez, como faz o aviso. A primeira semana foi mais lenta que fazer sozinha. O agente errou, ela corrigiu, a correção ficou anotada.</p>
+      <p>Hoje, segunda de manhã, ela digita uma barra e escolhe o aviso da semana. Ele confere a data no site oficial e, quando o site diz uma coisa e o calendário outra, ele para e pergunta. <strong>Ela lê e aprova.</strong></p>
+    </div>
+    <p style="margin-top:22px">O agente que você monta sai com as suas regras, o seu tom, as suas paradas e os seus exemplos. Ninguém mais tem um igual, porque ninguém faz a sua tarefa exatamente como você.</p>
+  </div>
+</section>
+
+<section id="recebe">
+  <div class="wrap">
+    <div class="narrow" style="padding:0">
+      <div class="kicker">O que você recebe</div>
+      <h2>O livro e as ferramentas pra montar o seu agente</h2>
+    </div>
+    <div class="itens">
+      <div class="item">
+        <div class="n">01</div>
+        <h3>A folha Comece aqui e o Montador</h3>
+        <p>Pra quem quer o agente agora. Quatro passos e uma frase só pra colar no aplicativo do Claude:</p>
+        <div class="frase">Leia o arquivo montar-agente.md desta pasta e siga as instruções dele. Quero montar um agente para uma tarefa repetitiva do meu trabalho.</div>
+        <p>A IA faz a sua tarefa uma vez sem manual, te pergunta o que ficou errado e, a partir daí, monta o agente com você, uma pergunta por vez. Antes de entregar, testa com quatro casos. O Montador vem em PDF, com o passo a passo pra salvar o arquivo no Bloco de Notas.</p>
+      </div>
+      <div class="item">
+        <div class="n">02</div>
+        <h3>O livro, Parte 1: O Arquiteto</h3>
+        <p>Pra quem nunca mexeu com IA. Sete capítulos, um passo por vez:</p>
+        <ul>
+          <li>escolher a tarefa certa, com a conta do quanto ela te custa em dinheiro;</li>
+          <li>escrever como você faz, incluindo o que você decide sem perceber;</li>
+          <li>o manual da empresa, que a IA lê antes de qualquer tarefa;</li>
+          <li>quando o agente tem que parar e te chamar, em vez de inventar;</li>
+          <li>como saber que o trabalho tá pronto;</li>
+          <li>entregar a planta e ver o agente trabalhar;</li>
+          <li>o caderno onde ele anota o que você corrigiu.</li>
+        </ul>
+        <p>No fim da Parte 1, você tem um agente funcionando.</p>
+      </div>
+      <div class="item">
+        <div class="n">03</div>
+        <h3>O livro, Parte 2: O Engenheiro</h3>
+        <p>Pra ampliar o agente: a trava que impede ele de publicar sozinho, um revisor que confere sem ver o rascunho, ligar o agente nas ferramentas que você usa e montar uma pequena equipe. Antes de ligar qualquer ferramenta de fora, o capítulo da trava vem primeiro.</p>
+      </div>
+      <div class="item">
+        <div class="n">04</div>
+        <h3>A ficha de trabalho em branco</h3>
+        <p>Com cada parte marcada no capítulo onde você preenche. Ela fica dentro do livro, que tem 111 páginas em PDF.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow" style="padding:0">
+      <div class="kicker">Por dentro</div>
+      <h2>Páginas do livro</h2>
+    </div>
+    <div class="paginas">
+      <figure><img src="img/p-tempo.jpg" alt="Página do capítulo 1 com a conta do tempo e do erro em dinheiro" width="640" height="906" loading="lazy"><figcaption>Capítulo 1: a conta de quanto a tarefa te custa.</figcaption></figure>
+      <figure><img src="img/p-paradas.jpg" alt="Página do capítulo 4 com o aviso de três linhas do agente que parou" width="640" height="906" loading="lazy"><figcaption>Capítulo 4: o agente para e avisa em três linhas.</figcaption></figure>
+      <figure><img src="img/p-memoria.jpg" alt="Página do capítulo 7 com o caderno de correções do agente" width="640" height="906" loading="lazy"><figcaption>Capítulo 7: o caderno onde a correção fica.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow" style="padding:0">
+      <div class="kicker">Antes de comprar</div>
+      <h2>Para quem é, e para quem não é</h2>
+    </div>
+    <div class="duas">
+      <div class="lista sim">
+        <h3>É pra você se</h3>
+        <ul>
+          <li>Você repete a mesma tarefa toda semana e sente que perde tempo nela.</li>
+          <li>Trabalha em qualquer área: atendimento, vendas, RH, administrativo, financeiro, conteúdo.</li>
+          <li>Já usa o ChatGPT ou o Claude em conversa solta e cansou de explicar tudo de novo.</li>
+          <li>Nunca programou e não quer começar agora.</li>
+        </ul>
+      </div>
+      <div class="lista nao">
+        <h3>Não é pra você se</h3>
+        <ul>
+          <li>Você procura curso de programação.</li>
+          <li>Quer um robô que publica e envia sozinho, sem ninguém olhar. Aqui o agente prepara e você aprova.</li>
+          <li>Não quer assinar o Claude. As ferramentas usam o aplicativo do Claude, que exige plano pago.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="autor">
+      <img src="../img/retrato.jpg" alt="Guilherme Carlos da Silva" width="640" height="800" loading="lazy">
+      <div>
+        <div class="kicker">Quem escreveu</div>
+        <h2 style="margin-bottom:16px">Guilherme Carlos da Silva</h2>
+        <p>Eu sou o @euguicarlos. Eu monto e uso agentes de IA no meu trabalho toda semana. No meu caso, uma tarefa que levava um dia inteiro passou a levar menos de vinte minutos, contando a minha revisão. É a minha experiência, com a minha tarefa. A sua conta você faz no primeiro capítulo.</p>
+        <p>E eu vou ser honesto com você: as primeiras semanas com um agente são mais lentas. Ensinar dá trabalho no começo, igual com um funcionário novo. No capítulo 6, eu mostro como atravessar essa fase sem desistir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap narrow">
+    <div class="oferta">
+      <div class="kicker">Instrução de Trabalho com IA</div>
+      <div class="valor">R$ 19,90</div>
+      <p class="serif" style="font-size:21px;margin-top:0">Ensina uma vez. Corrige quando precisar. Ele reaproveita toda vez.</p>
+      <ul>
+        <li>O livro em PDF, com 111 páginas, nas duas partes</li>
+        <li>A folha Comece aqui, com quatro passos</li>
+        <li>O Montador em PDF, com o passo a passo pra salvar no Bloco de Notas</li>
+        <li>A ficha de trabalho em branco, dentro do livro</li>
+        <li>Acesso imediato depois da compra</li>
+      </ul>
+      <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu agente <span class="preco">R$ 19,90</span></a>
+      <p class="aviso">Precisa de um computador com Windows ou Mac e de uma assinatura paga do Claude (Pro, Max, Ultra, Team ou Enterprise), contratada à parte. O plano grátis não inclui. E de uma tarefa que se repete, com um exemplo real de como você fez da última vez.</p>
+      <div class="garantia">
+        <div class="g">7 dias</div>
+        <p><strong>Garantia de 7 dias.</strong> Se não for pra você, pede o reembolso em até 7 dias pela própria Hotmart e recebe o valor de volta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Perguntas frequentes</div>
+    <h2>Antes que você pergunte</h2>
+    <details><summary>Preciso saber programar?</summary><p>Não. Você conversa com a IA em português e aprova o que ela faz. Nenhuma linha de código.</p></details>
+    <details><summary>Preciso pagar alguma ferramenta?</summary><p>Sim, e eu prefiro te avisar antes: o aplicativo do Claude, onde o agente trabalha, exige assinatura a partir do plano Pro. O plano grátis não inclui. O livro mostra um primeiro teste que dá pra fazer no site do Claude, mas o agente de verdade precisa do aplicativo.</p></details>
+    <details><summary>Preciso ler o livro inteiro antes?</summary><p>Não. Com a folha Comece aqui, você monta o agente no mesmo dia. O livro fica pra quando você quiser entender, ajustar quando ele errar e montar o segundo sozinho.</p></details>
+    <details><summary>Funciona pra minha área?</summary><p>Se a sua tarefa se repete, toma tempo e sai sempre com a mesma cara, funciona. O capítulo 1 te ajuda a escolher. Tarefa com dinheiro alto ou risco jurídico fica pra depois, e o livro explica por quê.</p></details>
+    <details><summary>O agente vai trabalhar sozinho?</summary><p>Ele faz a tarefa quando você pede, do seu jeito, e para quando aparece algo que não deve decidir sozinho. Publicar, enviar e apagar continuam com você.</p></details>
+    <details><summary>E os dados dos meus clientes?</summary><p>Você não precisa limpar o exemplo na mão: a ferramenta troca nomes, telefones e documentos por dados inventados antes de guardar. Dado pessoal não entra nos arquivos do agente.</p></details>
+    <details><summary>Quanto tempo leva?</summary><p>Depende da tarefa. Separa uma conversa sem pressa pra montar o primeiro. E conta com as primeiras semanas mais lentas, até ele pegar o seu jeito.</p></details>
+    <details><summary>Como eu recebo?</summary><p>Assim que o pagamento é aprovado, a Hotmart libera na área de membros o PDF do livro, a folha Comece aqui e o Montador em PDF, com o passo a passo pra salvar o arquivo montar-agente.md.</p></details>
+    <div style="margin-top:36px;text-align:center">
+      <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu agente <span class="preco">R$ 19,90</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="color:var(--pearl-45)">© 2026 Guilherme Carlos da Silva · <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a> · <a href="../">Materiais grátis</a></p>
+  <p style="color:var(--pearl-45);margin-top:6px">Pagamento e entrega pela Hotmart. Imagem da capa parcialmente gerada por inteligência artificial a partir de foto real.</p>
+</footer>
+
+<div class="fixa" id="fixa">
+  <div class="t">Instrução de Trabalho com IA<b>R$ 19,90</b></div>
+  <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu</a>
+</div>
+
+<script>
+/* Marca a origem da visita no link da Hotmart: ?o=dm vira sck=lp_dm. Só letras, números e hífen. */
+(function(){
+  var o='';
+  try{ o=(new URLSearchParams(location.search).get('o')||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,20); }catch(e){}
+  var sck=o?'lp_'+o:'lp';
+  document.querySelectorAll('a.compra').forEach(function(a){ a.href='https://pay.hotmart.com/E108383329P?sck='+sck; });
+  /* barra fixa no celular aparece depois da abertura */
+  var fixa=document.getElementById('fixa'), topo=document.getElementById('topo'), oferta=document.getElementById('oferta');
+  if('IntersectionObserver' in window){
+    var vendoTopo=true, vendoOferta=false;
+    var upd=function(){ fixa.classList.toggle('on', !vendoTopo && !vendoOferta); };
+    new IntersectionObserver(function(es){ es.forEach(function(e){ vendoTopo=e.isIntersecting; }); upd(); },{threshold:0}).observe(topo);
+    new IntersectionObserver(function(es){ es.forEach(function(e){ vendoOferta=e.isIntersecting; }); upd(); },{threshold:.2}).observe(oferta);
+  }
+})();
+</script>
+</body>
+</html>
