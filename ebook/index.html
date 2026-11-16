@@ -116,6 +116,12 @@ section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
 /* autor */
 .autor{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start}
 .autor img{width:100%;height:auto;border-radius:16px;border:1px solid var(--pearl-08);display:block}
+.certs{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.certs a{display:block;text-decoration:none;color:var(--pearl-45);font-size:13px;letter-spacing:.02em}
+.certs img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--pearl-08);margin-bottom:8px;transition:transform .2s}
+.certs a:hover img{transform:translateY(-2px)}
+.certs-mais{margin-top:14px;font-size:14px;color:var(--pearl-45)}
+@media(max-width:520px){.certs{grid-template-columns:1fr}}
 
 /* oferta */
 .oferta{text-align:center;padding:clamp(36px,6vw,64px) clamp(20px,5vw,56px);border:1px solid rgba(255,194,26,.35);border-radius:24px;
@@ -345,10 +351,17 @@ footer a{color:var(--pearl-70)}
       <div>
         <div class="kicker">Quem escreveu</div>
         <h2 style="margin-bottom:16px">Guilherme Carlos da Silva</h2>
-        <p>Eu sou o @euguicarlos. Eu monto e uso agentes de IA no meu trabalho toda semana. No meu caso, uma tarefa que levava um dia inteiro passou a levar menos de vinte minutos, contando a minha revisão. É a minha experiência, com a minha tarefa. A sua conta você faz no primeiro capítulo.</p>
+        <p>Neste ano eu quebrei o tornozelo e fiquei seis semanas parado. Usei esse tempo pra estudar: fiz quatro cursos de inteligência artificial ainda de bota, dois deles da Anthropic, a empresa que faz o Claude. Seis semanas depois, eu tinha um sistema que organiza o meu trabalho inteiro.</p>
+        <p>Hoje é esse sistema que produz o meu perfil, o <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a>, com 13,4 mil seguidores: pauta, roteiro, legenda, telas, publicação e leitura dos números. São 83 habilidades e mais de 80 peças feitas com ele. Eu decido, gravo o rosto quando precisa e aprovo o que vai ao ar.</p>
+        <p>No meu caso, uma tarefa que levava um dia inteiro passou a levar menos de vinte minutos, contando a minha revisão. É a minha experiência, com a minha tarefa. A sua conta você faz no primeiro capítulo.</p>
         <p>E eu vou ser honesto com você: as primeiras semanas com um agente são mais lentas. Ensinar dá trabalho no começo, igual com um funcionário novo. No capítulo 6, eu mostro como atravessar essa fase sem desistir.</p>
       </div>
     </div>
+    <div class="certs">
+      <a href="https://verify.skilljar.com/c/k3hp5r5ujw4c" target="_blank" rel="noopener"><img src="img/cert-claude-code.jpg" alt="Certificado Anthropic: Claude Code in Action, Guilherme Carlos da Silva, março de 2026" width="720" height="556" loading="lazy"><span>Claude Code in Action · conferir ↗</span></a>
+      <a href="https://verify.skilljar.com/c/n9ng7chhqp9p" target="_blank" rel="noopener"><img src="img/cert-claude-cowork.jpg" alt="Certificado Anthropic: Introduction to Claude Cowork, Guilherme Carlos da Silva, março de 2026" width="720" height="556" loading="lazy"><span>Claude Cowork · conferir ↗</span></a>
+    </div>
+    <p class="certs-mais">Também: IA para Marketing, Dominando a IA Generativa e IA para Gestão de Negócios, pela Inner AI.</p>
   </div>
 </section>
 
