@@ -64,8 +64,11 @@ strong{color:var(--pearl);font-weight:600}
 .hero .sub{font-size:clamp(17px,1.9vw,20px);color:var(--pearl-70);margin-top:22px;max-width:48ch}
 .hero .mote{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.4vw,26px);line-height:1.3;color:var(--cream)}
 .hero .acao{margin-top:30px}
-.livro{position:relative}
-.livro img{width:100%;height:auto;display:block;border-radius:6px;box-shadow:0 40px 80px -24px rgba(0,0,0,.9),0 0 0 1px var(--pearl-08);transform:rotate(1.5deg)}
+.livro{position:relative;max-width:380px;margin-left:auto}
+.livro video{width:100%;height:auto;display:block;border-radius:22px;border:1px solid var(--pearl-16);background:#0b0b0b;box-shadow:0 40px 80px -24px rgba(0,0,0,.9),0 0 0 6px rgba(234,234,234,.04)}
+.som{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);padding:9px 16px;border-radius:999px;border:1px solid var(--pearl-16);background:rgba(11,11,11,.72);color:var(--pearl);font:500 13px/1 var(--sans);letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.som:hover{border-color:var(--gold);color:var(--gold)}
+.oferta-capa{width:150px;height:auto;display:block;margin:18px auto 4px;border-radius:5px;box-shadow:0 24px 50px -18px rgba(0,0,0,.95),0 0 0 1px var(--pearl-08)}
 .selos{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--pearl-45)}
 .selos span::before{content:"✓ ";color:var(--gold)}
 
@@ -158,8 +161,7 @@ footer a{color:var(--pearl-70)}
 @media(max-width:860px){
   .hero{grid-template-columns:1fr}
   .hero{padding-top:28px}
-  .livro{max-width:280px;margin:0 auto}
-  .livro img{transform:none}
+  .livro{max-width:300px;margin:0 auto}
   .itens,.duas{grid-template-columns:1fr}
   .paginas{grid-template-columns:1fr 1fr}
   .paginas figure:last-child{display:none}
@@ -196,7 +198,8 @@ footer a{color:var(--pearl-70)}
       <div class="selos"><span>Acesso imediato</span><span>Garantia de 7 dias</span><span>Pagamento pela Hotmart</span></div>
     </div>
     <div class="livro">
-      <img src="img/capa.jpg" alt="Capa do e-book Instrução de Trabalho com IA, de Guilherme Carlos da Silva" width="900" height="1273" fetchpriority="high">
+      <video id="video-topo" src="img/motion-topo.mp4" poster="img/motion-topo.jpg" autoplay muted loop playsinline preload="auto" width="540" height="960" aria-label="Vídeo do e-book: toda semana você explica tudo de novo para a IA"></video>
+      <button type="button" class="som" id="som-topo" aria-pressed="false">🔇 Ativar som</button>
     </div>
   </header>
 </div>
@@ -369,6 +372,7 @@ footer a{color:var(--pearl-70)}
   <div class="wrap narrow">
     <div class="oferta">
       <div class="kicker">Instrução de Trabalho com IA</div>
+      <img class="oferta-capa" src="img/capa.jpg" alt="Capa do e-book Instrução de Trabalho com IA, de Guilherme Carlos da Silva" width="900" height="1273" loading="lazy">
       <div class="valor">R$ 19,90</div>
       <p class="serif" style="font-size:21px;margin-top:0">Ensina uma vez. Corrige quando precisar. Ele reaproveita toda vez.</p>
       <ul>
@@ -426,6 +430,16 @@ footer a{color:var(--pearl-70)}
     a.href='https://pay.hotmart.com/E108383329P?sck='+sck;
     a.addEventListener('click',function(){ try{ if(window.fbq) fbq('trackCustom','CliqueComprar',{origem:sck}); }catch(e){} });
   });
+  /* botão de som do vídeo do topo: começa mudo (exigência dos navegadores para tocar sozinho) */
+  var vt=document.getElementById('video-topo'), bs=document.getElementById('som-topo');
+  if(vt && bs){
+    bs.addEventListener('click',function(){
+      vt.muted=!vt.muted;
+      if(!vt.muted){ vt.currentTime=0; vt.play(); try{ if(window.fbq) fbq('trackCustom','VideoTopoSom'); }catch(e){} }
+      bs.textContent=vt.muted?'🔇 Ativar som':'🔊 Som ligado';
+      bs.setAttribute('aria-pressed',String(!vt.muted));
+    });
+  }
   /* barra fixa no celular aparece depois da abertura */
   var fixa=document.getElementById('fixa'), topo=document.getElementById('topo'), oferta=document.getElementById('oferta');
   if('IntersectionObserver' in window){
