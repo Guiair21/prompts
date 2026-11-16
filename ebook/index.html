@@ -14,6 +14,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Meta Pixel: conjunto de dados "Gui da Silva | Direção Criativa com IA" -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','810646365137177');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Instrução de Trabalho com IA',content_type:'product',value:19.90,currency:'BRL'});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=810646365137177&ev=PageView&noscript=1"></noscript>
 <style>
 :root{
   --ink:#0B0B0B;--coal:#1C1C1C;--gold:#FFC21A;--cream:#FFF8AF;--pearl:#EAEAEA;
@@ -359,7 +371,7 @@ footer a{color:var(--pearl-70)}
 
 <footer>
   <p style="color:var(--pearl-45)">© 2026 Guilherme Carlos da Silva · <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a> · <a href="../">Materiais grátis</a></p>
-  <p style="color:var(--pearl-45);margin-top:6px">Pagamento e entrega pela Hotmart. Imagem da capa parcialmente gerada por inteligência artificial a partir de foto real.</p>
+  <p style="color:var(--pearl-45);margin-top:6px">Pagamento e entrega pela Hotmart. Imagem da capa parcialmente gerada por inteligência artificial a partir de foto real. Esta página usa o pixel da Meta para medir os anúncios.</p>
 </footer>
 
 <div class="fixa" id="fixa">
@@ -373,7 +385,10 @@ footer a{color:var(--pearl-70)}
   var o='';
   try{ o=(new URLSearchParams(location.search).get('o')||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,20); }catch(e){}
   var sck=o?'lp_'+o:'lp';
-  document.querySelectorAll('a.compra').forEach(function(a){ a.href='https://pay.hotmart.com/E108383329P?sck='+sck; });
+  document.querySelectorAll('a.compra').forEach(function(a){
+    a.href='https://pay.hotmart.com/E108383329P?sck='+sck;
+    a.addEventListener('click',function(){ try{ if(window.fbq) fbq('trackCustom','CliqueComprar',{origem:sck}); }catch(e){} });
+  });
   /* barra fixa no celular aparece depois da abertura */
   var fixa=document.getElementById('fixa'), topo=document.getElementById('topo'), oferta=document.getElementById('oferta');
   if('IntersectionObserver' in window){
