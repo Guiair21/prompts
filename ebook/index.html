@@ -126,6 +126,7 @@ section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
 .num-ouro{grid-column:1/-1;background:var(--gold);padding:20px 20px 18px}
 .num-ouro b{font-size:68px}
 .num-largo{grid-column:1/-1}
+.cn{font-style:normal;font-variant-numeric:tabular-nums}
 @media(min-width:861px){
   .autor{grid-template-columns:repeat(12,1fr);column-gap:28px;row-gap:0;grid-template-areas:"f f f f c c c c c c c c" "f f f f n n n n n n n n" "t t t t t t t d d d d d"}
   .autor>img{grid-area:f;max-width:none}
@@ -134,7 +135,7 @@ section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--pearl-08)}
   .autor-txt{grid-area:t;margin-top:40px}
   .autor .dist{grid-area:d;margin-top:40px;align-self:center;text-align:center}
   .autor .dist-grade{max-width:330px;margin:0 auto}
-  .num-ouro{grid-column:3;grid-row:1/span 2}
+  .num-ouro{grid-column:3;grid-row:1/span 3}
 }
 @media(max-width:860px){.so-pc{display:none}}
 .dist{margin-top:34px}
@@ -375,11 +376,13 @@ footer a{color:var(--pearl-70)}
       <div class="autor-cab"><div class="kicker">Quem escreveu</div>
         <h2 style="margin-bottom:16px">Guilherme Carlos da Silva</h2></div>
       <div class="nums">
-          <div class="num num-ouro"><b>+13<br class="so-pc"> mil</b><span>seguidores no @euguicarlos, perfil feito com IA</span></div>
-          <div class="num"><b>10+ anos</b><span>trabalhando com marketing</span></div>
-          <div class="num"><b>5</b><span>certificações da Anthropic</span></div>
-          <div class="num"><b>80+</b><span>peças feitas com o sistema</span></div>
-          <div class="num"><b>20 min</b><span>numa tarefa que levava um dia inteiro</span></div>
+          <div class="num num-ouro"><b>+<em class="cn" data-n="13">13</em><br class="so-pc"> mil</b><span>seguidores no @euguicarlos, perfil feito com IA</span></div>
+          <div class="num"><b><em class="cn" data-n="8">8</em></b><span>agentes validados em uma operação real</span></div>
+          <div class="num"><b><em class="cn" data-n="60">60</em>+</b><span>skills desenvolvidas</span></div>
+          <div class="num"><b><em class="cn" data-n="10">10</em>+ anos</b><span>trabalhando com marketing</span></div>
+          <div class="num"><b><em class="cn" data-n="5">5</em></b><span>certificações da Anthropic</span></div>
+          <div class="num"><b><em class="cn" data-n="80">80</em>+</b><span>peças feitas com o sistema</span></div>
+          <div class="num"><b><em class="cn" data-n="20">20</em> min</b><span>numa tarefa que levava um dia inteiro</span></div>
         </div>
       <div class="autor-txt">
         <p>Eu trabalho com marketing há mais de dez anos. Social media, vídeo, fotografia, design e texto, para empresas e para a minha própria marca. Passei anos fazendo à mão tudo o que hoje eu ensino a inteligência artificial a fazer. Por isso eu sei quando o resultado ficou bom e quando ficou genérico.</p>
@@ -472,6 +475,20 @@ footer a{color:var(--pearl-70)}
     new IntersectionObserver(function(es){ es.forEach(function(e){ vendoTopo=e.isIntersecting; }); upd(); },{threshold:0}).observe(topo);
     new IntersectionObserver(function(es){ es.forEach(function(e){ vendoOferta=e.isIntersecting; }); upd(); },{threshold:.2}).observe(oferta);
   }
+})();
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.cn');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  els.forEach(function(e){e.textContent='0'});
+  var io=new IntersectionObserver(function(ent){ent.forEach(function(x){
+    if(!x.isIntersecting)return; io.unobserve(x.target);
+    var el=x.target,n=+el.dataset.n,t0=null,d=1200;
+    function f(t){if(!t0)t0=t;var k=Math.min((t-t0)/d,1),v=Math.round(n*(1-Math.pow(1-k,3)));el.textContent=v;if(k<1)requestAnimationFrame(f)}
+    requestAnimationFrame(f);
+  })},{threshold:.4});
+  els.forEach(function(e){io.observe(e)});
 })();
 </script>
 </body>
