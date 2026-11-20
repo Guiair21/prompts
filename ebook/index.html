@@ -171,6 +171,20 @@ details p{margin:0 0 20px;font-size:15.5px}
 footer{position:relative;z-index:10;border-top:1px solid var(--pearl-08);padding:36px var(--gut) 110px;text-align:center;font-size:13px;color:var(--pearl-45)}
 footer a{color:var(--pearl-70)}
 
+/* funções que viram agente */
+.funcoes{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.fn{background:var(--coal);border:1px solid var(--pearl-08);border-radius:16px;padding:24px 24px 22px;transition:border-color .2s,transform .2s}
+.fn:hover{border-color:rgba(255,194,26,.4);transform:translateY(-2px)}
+.fn .ic{width:46px;height:46px;border-radius:12px;background:rgba(255,194,26,.1);border:1px solid rgba(255,194,26,.28);display:grid;place-items:center;margin-bottom:14px}
+.fn .ic svg{width:24px;height:24px;fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fn h3{margin-bottom:4px}
+.fn p{margin-top:8px;font-size:15px;line-height:1.55}
+.fn p.tar{margin-top:2px;color:var(--cream);font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.3}
+.fn p b{color:var(--gold);font-weight:500}
+.fn.mais{background:transparent;border:1px dashed rgba(255,194,26,.45)}
+.fn.mais h3{color:var(--gold)}
+@media(max-width:860px){.funcoes{grid-template-columns:1fr}}
+
 /* barra fixa no celular */
 .fixa{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
   background:rgba(11,11,11,.92);border-top:1px solid var(--pearl-16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(110%);transition:transform .3s}
@@ -214,7 +228,7 @@ footer a{color:var(--pearl-70)}
       <p class="sub"><strong>Instrução de Trabalho com IA</strong> é o livro e as ferramentas pra transformar a tarefa que mais te come tempo num agente que faz do seu jeito. Sem programar. Começa no ChatGPT grátis que você já usa.</p>
       <p class="mote">Ensina uma vez. Corrige quando precisar. Ele reaproveita toda vez.</p>
       <div class="acao">
-        <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu agente <span class="preco">R$ 19,90</span></a>
+        <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu agente</a>
       </div>
       <div class="selos"><span>Acesso imediato</span><span>Garantia de 7 dias</span><span>Pagamento pela Hotmart</span></div>
     </div>
@@ -352,15 +366,17 @@ footer a{color:var(--pearl-70)}
       <h2>Que tarefa vira agente</h2>
       <p>Qualquer tarefa que se repete, toma tempo e sai sempre com a mesma cara. Alguns exemplos por área:</p>
     </div>
-    <div class="itens">
-      <div class="item"><h3>Recepção de clínica</h3><p>Ler a agenda do dia seguinte e preparar a mensagem de confirmação de cada paciente, separando quem está com telefone faltando, horário duplicado ou consulta fora do expediente.</p></div>
-      <div class="item"><h3>Escritório de contabilidade</h3><p>Montar o aviso da semana pros clientes com o imposto que vence e até quando, e parar quando o calendário oficial e a agenda do escritório não batem.</p></div>
-      <div class="item"><h3>Loja e vendas</h3><p>Responder perguntas de preço, prazo e entrega no padrão da loja, e separar pra você o cliente que reclama ou pede algo fora da tabela.</p></div>
-      <div class="item"><h3>Imobiliária</h3><p>Transformar a ficha do imóvel em anúncio pronto, com as palavras da casa, e avisar quando falta metragem, valor de condomínio ou foto.</p></div>
-      <div class="item"><h3>RH</h3><p>Escrever a vaga a partir do pedido do gestor e preparar a mensagem de retorno pros candidatos, sempre no mesmo tom.</p></div>
-      <div class="item"><h3>Financeiro</h3><p>Preparar o lembrete de cobrança de quem venceu, com o valor e a data de cada um, e deixar de fora quem já pagou ou tem acordo.</p></div>
-      <div class="item"><h3>Conteúdo e social media</h3><p>Transformar o assunto da semana em legenda e roteiro no jeito da marca, e parar quando o dado precisa de fonte.</p></div>
-      <div class="item"><h3>Escola e cursos</h3><p>Preparar o recado semanal pros pais ou alunos a partir do calendário, e avisar quando cai feriado ou a data mudou.</p></div>
+    <div class="funcoes">
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M9 15l2 2 4-4"/></svg></div><h3>Recepção de clínica</h3><p class="tar">Confirmar as consultas do dia seguinte.</p><p><b>O agente</b> lê a agenda e prepara a mensagem de cada paciente.</p><p><b>Para e te chama</b> quando dois horários não batem.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div><h3>Financeiro</h3><p class="tar">Lembrete de cobrança de quem venceu.</p><p><b>O agente</b> prepara o lembrete de cada cliente em aberto e deixa de fora quem já pagou.</p><p><b>Para e te chama</b> quando um valor não bate com a lista.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg></div><h3>Contabilidade</h3><p class="tar">Aviso semanal de imposto e prazo.</p><p><b>O agente</b> prepara o aviso de cada cliente com o que vence e até quando.</p><p><b>Para e te chama</b> quando o prazo não fecha com o calendário oficial.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/></svg></div><h3>RH e recrutamento</h3><p class="tar">Escrever a vaga e dar retorno aos candidatos.</p><p><b>O agente</b> prepara a vaga e a resposta de cada candidato, no tom da empresa.</p><p><b>Para e te chama</b> quando falta informação da vaga.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12.1a1 1 0 0 1-1 .9H7.2a1 1 0 0 1-1-.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div><h3>Loja e atendimento</h3><p class="tar">Responder preço, prazo e entrega.</p><p><b>O agente</b> responde no padrão da loja, com a tabela do dia.</p><p><b>Para e te chama</b> quando o cliente reclama ou pede algo fora da tabela.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10M10 20v-6h4v6"/></svg></div><h3>Imobiliária</h3><p class="tar">Transformar a ficha do imóvel em anúncio.</p><p><b>O agente</b> escreve o anúncio com as palavras da casa.</p><p><b>Para e te chama</b> quando falta metragem, condomínio ou foto.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div><h3>Conteúdo e social media</h3><p class="tar">Legenda e roteiro da semana.</p><p><b>O agente</b> transforma o assunto em texto no jeito da marca.</p><p><b>Para e te chama</b> quando um dado precisa de fonte.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c2 2 10 2 12 0v-5M22 9v6"/></svg></div><h3>Escola e cursos</h3><p class="tar">Recado semanal pros pais ou alunos.</p><p><b>O agente</b> prepara o recado a partir do calendário.</p><p><b>Para e te chama</b> quando cai feriado ou a data mudou.</p></div>
+      <div class="fn"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></div><h3>Compras</h3><p class="tar">Pedido de cotação aos fornecedores.</p><p><b>O agente</b> monta o pedido de cada fornecedor a partir da lista.</p><p><b>Para e te chama</b> quando o item está fora da lista ou o preço fugiu do último.</p></div>
+      <div class="fn mais"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div><h3>E muito mais</h3><p>Relatório da semana, ata de reunião, resposta de e-mail, checklist de entrega. Se a tarefa se repete, toma tempo e sai sempre com a mesma cara, ela vira agente.</p></div>
     </div>
     <p style="margin-top:20px">Em todos, o agente prepara e você aprova. Enviar, publicar e cobrar continuam com você.</p>
   </div>
@@ -469,7 +485,7 @@ footer a{color:var(--pearl-70)}
 </footer>
 
 <div class="fixa" id="fixa">
-  <div class="t">Instrução de Trabalho com IA<b>R$ 19,90</b></div>
+  <div class="t">Instrução de Trabalho com IA<b>Livro + Montadores</b></div>
   <a class="cta compra" href="https://pay.hotmart.com/E108383329P?sck=lp">Quero o meu</a>
 </div>
 
