@@ -15,7 +15,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <!-- Meta Pixel: conjunto de dados "Gui da Silva | Direção Criativa com IA" -->
+<!-- Só carrega depois que a pessoa aceita os cookies (banner #cookies) -->
 <script>
+function carregarPixel(){if(window.fbq)return;
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -24,8 +26,9 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','810646365137177');
 fbq('track','PageView');
 fbq('track','ViewContent',{content_name:'Instrução de Trabalho com IA',content_type:'product',value:19.90,currency:'BRL'});
+}
+try{ if(localStorage.getItem('cookies')==='sim') carregarPixel(); }catch(e){}
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=810646365137177&ev=PageView&noscript=1"></noscript>
 <style>
 :root{
   --ink:#0B0B0B;--coal:#1C1C1C;--gold:#FFC21A;--cream:#FFF8AF;--pearl:#EAEAEA;
@@ -186,6 +189,12 @@ footer a{color:var(--pearl-70)}
 @media(max-width:860px){.funcoes{grid-template-columns:1fr}}
 
 /* barra fixa no celular */
+.cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:120;max-width:560px;margin:0 auto;padding:18px 20px;border-radius:18px;background:var(--coal);border:1px solid var(--pearl-16);box-shadow:0 24px 60px -20px rgba(0,0,0,.9);font-size:14px;line-height:1.5;color:var(--pearl-70)}
+.cookies p{margin:0;color:var(--pearl-70)}
+.cookies .bts{display:flex;gap:10px;margin-top:14px}
+.cookies button{flex:1;padding:12px 16px;border-radius:999px;border:1px solid var(--pearl);background:transparent;color:var(--pearl);font:500 14px/1 var(--sans);cursor:pointer}
+.cookies button:hover{border-color:var(--gold);color:var(--gold)}
+.link-cookies{background:none;border:0;padding:0;color:var(--gold);font:inherit;text-decoration:underline;cursor:pointer}
 .fixa{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
   background:rgba(11,11,11,.92);border-top:1px solid var(--pearl-16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transform:translateY(110%);transition:transform .3s}
 .fixa.on{transform:none;visibility:visible}
@@ -481,7 +490,8 @@ footer a{color:var(--pearl-70)}
 
 <footer>
   <p style="color:var(--pearl-45)">© 2026 Guilherme Carlos da Silva · <a href="https://www.instagram.com/euguicarlos/" target="_blank" rel="noopener">@euguicarlos</a> · <a href="../">Materiais grátis</a></p>
-  <p style="color:var(--pearl-45);margin-top:6px">Pagamento e entrega pela Hotmart. Imagem da capa parcialmente gerada por inteligência artificial a partir de foto real. Esta página usa o pixel da Meta para medir os anúncios.</p>
+  <p style="color:var(--pearl-45);margin-top:6px">Pagamento e entrega pela Hotmart. Imagem da capa parcialmente gerada por inteligência artificial a partir de foto real. Com a sua permissão, esta página usa o pixel da Meta para medir os anúncios. <button type="button" class="link-cookies" id="abrir-cookies">Preferências de cookies</button></p>
+  <p style="color:var(--pearl-45);margin-top:6px">39.478.991 GUILHERME CARLOS DA SILVA - ME - CNPJ 39.478.991/0001-58</p>
 </footer>
 
 <div class="fixa" id="fixa">
@@ -531,6 +541,21 @@ footer a{color:var(--pearl-70)}
     requestAnimationFrame(f);
   })},{threshold:.4});
   els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<div class="cookies" id="cookies" role="dialog" aria-label="Aviso de cookies" hidden>
+  <p>Uso cookies do pixel da Meta só para medir os anúncios desta página. Você escolhe se aceita.</p>
+  <div class="bts"><button type="button" id="cookies-recusar">Recusar</button><button type="button" id="cookies-aceitar">Aceitar</button></div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('cookies');
+  var escolha=null; try{ escolha=localStorage.getItem('cookies'); }catch(e){}
+  function guardar(v){ try{ localStorage.setItem('cookies',v); }catch(e){} b.hidden=true; }
+  if(escolha!=='sim'&&escolha!=='nao') b.hidden=false;
+  document.getElementById('cookies-aceitar').addEventListener('click',function(){ guardar('sim'); carregarPixel(); });
+  document.getElementById('cookies-recusar').addEventListener('click',function(){ var tinha=escolha==='sim'||!!window.fbq; guardar('nao'); ['_fbp','_fbc'].forEach(function(n){ document.cookie=n+'=; Max-Age=0; path=/'; document.cookie=n+'=; Max-Age=0; path=/; domain='+location.hostname.replace(/^www\./,''); }); escolha='nao'; if(tinha) location.reload(); });
+  document.getElementById('abrir-cookies').addEventListener('click',function(){ b.hidden=false; });
 })();
 </script>
 </body>
